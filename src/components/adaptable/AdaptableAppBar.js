@@ -1,8 +1,10 @@
+import React, { useContext } from 'react';
+import AdaptableContext from '../../utils/adaptableContext';
 import styled from 'styled-components';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 
-export const AdaptableAppBar = styled(AppBar)`
+const StyledAppBar = styled(AppBar)`
     && {
         background-color: ${props => props.darkMode ?
             props.theme.bgColors.dark :
@@ -15,7 +17,7 @@ export const AdaptableAppBar = styled(AppBar)`
     }
 `;
 
-export const AdaptableToolBar = styled(Toolbar)`
+const StyledToolBar = styled(Toolbar)`
     && {
         background-color: ${props => props.darkMode ?
             props.theme.bgColors.dark :
@@ -28,5 +30,15 @@ export const AdaptableToolBar = styled(Toolbar)`
     }
 `;
 
+export default function AdaptableAppBar(props) {
+    const { darkMode } = useContext(AdaptableContext)
 
+    return (
+        <StyledAppBar {...props} darkMode={darkMode} >
+            <StyledToolBar darkMode={darkMode}>
+                {props.children}
+            </StyledToolBar>
+        </StyledAppBar>
+    );
+}
 

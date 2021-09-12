@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Box } from '@material-ui/core';
+import React, { useContext } from 'react';
+import AdaptableContext from '../../utils/adaptableContext';
 
-export const AdaptableBox = styled(Box)`
+const StyledBox = styled(Box)`
     && {
         background-color: ${props => props.darkMode ?
             props.theme.bgColors.dark :
@@ -13,3 +15,14 @@ export const AdaptableBox = styled(Box)`
         };
     }
 `;
+
+export default function AdaptableBox(props) {
+    const { darkMode } = useContext(AdaptableContext)
+
+    return (
+        <StyledBox darkMode={darkMode} {...props}>
+            {props.children}
+        </StyledBox>
+    );
+}
+

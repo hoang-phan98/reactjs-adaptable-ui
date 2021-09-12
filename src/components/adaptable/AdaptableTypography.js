@@ -1,7 +1,9 @@
+import React, { useContext } from 'react';
+import AdaptableContext from '../../utils/adaptableContext';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 
-export const AdaptableTypography= styled(Typography)`
+const StyledTypography= styled(Typography)`
     && {
         background-color: ${props => props.darkMode ?
             props.theme.bgColors.dark :
@@ -13,3 +15,14 @@ export const AdaptableTypography= styled(Typography)`
         };
     }
 `;
+
+export default function AdaptableTypography(props) {
+    const { darkMode } = useContext(AdaptableContext)
+
+    return (
+        <StyledTypography darkMode={darkMode} {...props}>
+            {props.children}
+        </StyledTypography>
+    )
+
+}

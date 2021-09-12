@@ -1,7 +1,9 @@
+import React, { useContext } from 'react';
+import AdaptableContext from '../../utils/adaptableContext';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
-const AdaptableButton = styled(Button)`
+const StyledButton = styled(Button)`
     && {
         background-color: ${props => props.darkMode ? 
             props.theme.bgColors.dark : 
@@ -17,4 +19,11 @@ const AdaptableButton = styled(Button)`
     }
 `;
 
-export default AdaptableButton;
+export default function AdaptableButton(props) {
+    const { darkMode } = useContext(AdaptableContext)
+    return (
+        <StyledButton darkMode={darkMode} {...props}>
+            {props.children}
+        </StyledButton>
+    )
+}
