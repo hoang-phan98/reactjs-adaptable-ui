@@ -6,7 +6,7 @@ import AppNavBar from './components/extended/AppNavBar';
 import AppBox from './components/extended/AppBox';
 import AppList from './components/extended/AppList';
 
-function App(props) {
+function App() {
   const [state, dispatch] = useReducer(
     adaptableReducer,
     initialState
