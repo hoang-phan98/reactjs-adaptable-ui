@@ -6,7 +6,7 @@ import AdaptableTypography from '../adaptable/AdaptableTypography';
 export default function AppList() {
 
     return (
-        <AdaptableList>
+        <AdaptableList optional>
             <ListItem>
                 <AdaptableTypography variant="body1"> Item1 </AdaptableTypography>
             </ListItem>
