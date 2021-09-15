@@ -6,7 +6,7 @@ export default function SetDarkModeButton() {
     const { setDarkMode } = useContext(AdaptableContext)
     return (
         <AdaptableButton onClick={setDarkMode}>
-            Set Dark Mode
+            Centrelink
         </AdaptableButton>
     )
 }
