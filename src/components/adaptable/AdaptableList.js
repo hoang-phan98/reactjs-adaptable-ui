@@ -27,7 +27,7 @@ export default function AdaptableList(props) {
         <StyledList {...props} darkMode={darkMode}>
             {props.optional ? (
                 <React.Fragment>
-                    <IconButton onClick={() => setShow(prev => !prev)}>
+                    <IconButton color="inherit" onClick={() => setShow(prev => !prev)}>
                         {show ? <IndeterminateCheckBoxIcon fontSize="small" /> : <AddBoxIcon fontSize="small" />}
                     </IconButton>
                     {show && props.children}
