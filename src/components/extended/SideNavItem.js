@@ -26,7 +26,7 @@ const SubMenu = ({ item }) => {
                 {showSubNav && item.subNav ?
                     item.subNav.map((item, index) => {
                         return (
-                            <AdaptableListItem>
+                            <AdaptableListItem optional>
                                 <Link color="inherit" variant="body2" index={index}> {item.title} </Link>
                             </AdaptableListItem>
                         )

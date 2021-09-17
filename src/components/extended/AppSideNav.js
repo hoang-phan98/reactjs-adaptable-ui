@@ -15,11 +15,12 @@ import SearchBar from './SearchBar';
 
 const useStyles = makeStyles(() => ({
     root: {
-        margin: "5px",
+        margin: "7px",
         top: "auto",
         height: "calc(100vh - 100px)",
-        overflowY: "scroll"
-    },
+        overflowY: "scroll",
+        width: "25%"
+    }
 }))
 
 export default function AppSideNav(props) {
