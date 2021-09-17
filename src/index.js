@@ -6,12 +6,12 @@ import App from './App';
 // Theme object to be shared by all components of the app
 const theme = {
   bgColors: {
-    dark: "black",
-    light: "white",
+    dark: "#212121",
+    light: "#3f51b5",
   },
   textColors: {
-    dark: "white",
-    light: "black",
+    dark: "#EEEEEE",
+    light: "white",
   },
   fonts: {
     default: "Arial",

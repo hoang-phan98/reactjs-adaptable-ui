@@ -17,7 +17,6 @@ const useStyles = makeStyles(() => ({
     root: {
         margin: "5px",
         top: "auto",
-        border: "3px solid black",
         height: "calc(100vh - 100px)",
         overflowY: "scroll"
     },
