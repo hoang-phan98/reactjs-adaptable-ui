@@ -26,7 +26,7 @@ export default function AppNavBar() {
                 </IconButton>
                 <SetDarkModeButton />
             </AdaptableAppBar>
-            <AppSideNav showSideNav={showSideNav}/>
+            <AppSideNav sideNavState={{showSideNav, setShowSideNav}}/>
         </>
     );
 }

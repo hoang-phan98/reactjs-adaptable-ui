@@ -4,14 +4,14 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ListItemText from '@material-ui/core/ListItemText';
 import AdaptableListItem from "../adaptable/AdaptableListItem";
-import { IconButton, Link } from "@material-ui/core";
+import { IconButton, Link, Divider } from "@material-ui/core";
 
 const SubMenu = ({ item }) => {
     const [showSubNav, setShowSubNav] = useState(false)
 
     return (
         <>
-            <AdaptableListItem button onClick={() => setShowSubNav(!showSubNav)}>
+            <AdaptableListItem optional button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
                     <ListItemText variant="body1">
                         {item.title}
@@ -61,6 +61,7 @@ export const SideNavItem = ({ item }) => {
                     }) : null
                 }
             </div>
+            <Divider/>
         </>
     )
 }
