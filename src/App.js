@@ -3,6 +3,8 @@ import { setDarkMode } from './store/actions/adaptableActions';
 import { adaptableReducer, initialState } from './store/reducers/adaptableReducers';
 import AdaptableContext from './utils/adaptableContext';
 import AppNavBar from './components/extended/AppNavBar';
+import FavouriteServices from './components/extended/FavouriteServices';
+import CovidInfo from './components/extended/CovidInfo';
 
 function App() {
   const [state, dispatch] = useReducer(
@@ -16,6 +18,8 @@ function App() {
       setDarkMode: () => dispatch(setDarkMode()),
     }}>
       <AppNavBar/>
+      <FavouriteServices/>
+      <CovidInfo/>
     </AdaptableContext.Provider>
   );
 }

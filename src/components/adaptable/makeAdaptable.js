@@ -9,14 +9,13 @@ const makeAdaptable = (component) => {
     const StyledComponent = styled(component)`
     && {
         background-color: ${props => props.darkMode ?
-            props.theme.bgColors.dark :
-            props.theme.bgColors.light
+            props.theme.bgColors.dark.primary :
+            props.theme.bgColors.light.primary
         };
         color: ${props => props.darkMode ?
-            props.theme.textColors.dark :
-            props.theme.textColors.light
+            props.theme.textColors.dark.primary :
+            props.theme.textColors.light.primary
         };
-        font-size: 1em;
     }`;
 
     return function AdaptableComponent(props) {
