@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SetDarkModeButton from './SetDarkModeButton';
 import { makeStyles } from '@material-ui/core';
 import AppSideNav from './AppSideNav';
+import AdaptableToolBar from '../adaptable/AdaptableToolBar';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -19,14 +20,16 @@ export default function AppNavBar() {
     return (
         <>
             <AdaptableAppBar className={classes.root}>
-                <IconButton 
-                    color="inherit" 
-                    onClick={() => setShowSideNav(!showSideNav)}>
-                    <MenuIcon />
-                </IconButton>
-                <SetDarkModeButton />
+                <AdaptableToolBar>
+                    <IconButton
+                        color="inherit"
+                        onClick={() => setShowSideNav(!showSideNav)}>
+                        <MenuIcon />
+                    </IconButton>
+                    <SetDarkModeButton />
+                </AdaptableToolBar>
             </AdaptableAppBar>
-            <AppSideNav sideNavState={{showSideNav, setShowSideNav}}/>
+            <AppSideNav sideNavState={{ showSideNav, setShowSideNav }} />
         </>
     );
 }
