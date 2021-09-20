@@ -228,7 +228,7 @@ export default function AdaptableMenu(props) {
                         </RadioGroup>
                         {surveyQuestions["lowVision"] && <Typography paragraph><i>Ok, we will increase text size.</i></Typography>}
                         <br />
-                        <Typography paragraph>Do you have photophobia (sensitivity to late)?</Typography>
+                        <Typography paragraph>Do you have photophobia (sensitivity to light)?</Typography>
                         <RadioGroup row aria-label="photophobic" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "photophobic")} value={surveyQuestions["photophobic"]}>
                             <FormControlLabel value={true} control={<Radio />} label="Yes" />
                             <FormControlLabel value={false} control={<Radio />} label="No" />
