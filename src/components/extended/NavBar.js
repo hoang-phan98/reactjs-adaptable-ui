@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SetDarkModeButton from './SetDarkModeButton';
 import { makeStyles } from '@material-ui/core';
-import AppSideNav from './AppSideNav';
+import AppSideNav from './sideNav';
 import AdaptableToolBar from '../adaptable/AdaptableToolBar';
 
 const useStyles = makeStyles(() => ({

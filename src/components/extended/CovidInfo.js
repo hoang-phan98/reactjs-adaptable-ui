@@ -6,9 +6,8 @@ import AdaptableTypography from "../adaptable/AdaptableTypography";
 
 const useStyles = makeStyles(() => ({
     root: {
-        width: "50%",
-        padding: "10px",
-        marginTop: "5px",
+        padding: "5px",
+        margin: "10px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -25,7 +24,7 @@ const useStyles = makeStyles(() => ({
 export default function CovidInfo() {
     const classes = useStyles()
     return (
-        <AdaptablePaper elevation={20} className={classes.root}>
+        <AdaptablePaper elevation={20} className={classes.root} optional>
             <AdaptablePaper elevation={0} className={classes.secondary}>
                 <Icon className={classes.item}>
                     <Warning />

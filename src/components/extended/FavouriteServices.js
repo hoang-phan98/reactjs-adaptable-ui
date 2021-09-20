@@ -8,8 +8,7 @@ import ArrowRight from "@material-ui/icons/ArrowRight";
 
 const useStyles = makeStyles(() => ({
     root: {
-        width: "50%",
-        marginTop: "10px",
+        margin: "10px",
         padding: "10px"
     },
     heading: {
@@ -25,7 +24,7 @@ export default function FavouriteServices() {
 
     return (
         <AdaptablePaper className={classes.root} >
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
                 <Grid className={classes.heading} item xs={12}>
                     <AdaptableTypography variant="h6">Favourite Services</AdaptableTypography>
                 </Grid>

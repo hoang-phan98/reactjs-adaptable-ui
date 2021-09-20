@@ -1,8 +1,8 @@
 import React from 'react';
-import AdaptableList from '../adaptable/AdaptableList';
+import AdaptableList from '../../adaptable/AdaptableList';
 import { SideNavData } from './SideNavData';
 import { SideNavItem } from './SideNavItem';
-import AdaptableBox from '../adaptable/AdaptableBox';
+import AdaptableBox from '../../adaptable/AdaptableBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {
     Drawer,
@@ -11,7 +11,7 @@ import {
     Typography,
     Divider
 } from '@material-ui/core';
-import SearchBar from './SearchBar';
+import SearchBar from '../SearchBar';
 
 const useStyles = makeStyles(() => ({
     root: {
