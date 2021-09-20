@@ -76,6 +76,7 @@ const StyledDiv = styled.div`
         "#000000"
     };
         padding: 15px;
+        height: inherit;
     }
 `;
 

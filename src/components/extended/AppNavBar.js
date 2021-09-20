@@ -36,7 +36,7 @@ export default function AppNavBar() {
                         onClick={() => setShowAdaptableMenu(!showAdaptableMenu)}
                         style={{ marginLeft: 'auto', marginRight: '50px' }}>
                         <FormatSizeIcon />
-                        <text>Accessibility</text>
+                        <text style={{ marginLeft: '5px' }}>Accessibility</text>
                     </AdaptableButton>
                 </AdaptableToolBar>
             </AdaptableAppBar>
