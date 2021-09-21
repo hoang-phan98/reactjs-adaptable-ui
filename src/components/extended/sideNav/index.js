@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
         top: "auto",
         height: "calc(100vh - 100px)",
         overflowY: "scroll",
-        width: "25%"
+        width: "25%",
     }
 }))
 
@@ -36,7 +36,7 @@ export default function AppSideNav(props) {
             variant="persistent"
             anchor="left"
             open={showSideNav}>
-            <AdaptableBox>
+            <AdaptableBox style={{ backgroundColor: '#0055B9'}}>
                 <IconButton color="inherit" onClick={() => setShowSideNav(false)}>
                     <ChevronLeftIcon />
                     <Typography>Hide Menu</Typography>
@@ -45,7 +45,7 @@ export default function AppSideNav(props) {
             <Divider />
             <SearchBar />
             <Divider />
-            <AdaptableList>
+            <AdaptableList style={{backgroundColor: '#0055B9'}}>
                 {SideNavData.map((item, index) => {
                     return <SideNavItem item={item} key={index} />;
                 })}
