@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AdaptableButton from '../adaptable/AdaptableButton';
 import { makeStyles } from '@material-ui/core';
-import AppSideNav from './AppSideNav';
+import AppSideNav from './sideNav';
 import AdaptableToolBar from '../adaptable/AdaptableToolBar';
 import AdaptableMenu from './AdaptableMenu';
 import FormatSizeIcon from '@material-ui/icons/FormatSize';

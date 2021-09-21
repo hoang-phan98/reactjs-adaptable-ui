@@ -8,15 +8,14 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 const makeAdaptable = (component) => {
     const StyledComponent = styled(component)`
     && {
-        background-color: ${props => props.darkMode ?
-            props.theme.bgColors.dark :
-            props.theme.bgColors.light
+        background-color: ${ props => props.darkMode ?
+            (props.adaptableVariant === "secondary" ? props.theme.bgColors.dark.secondary : props.theme.bgColors.dark.primary) :
+            (props.adaptableVariant === "secondary" ? props.theme.bgColors.light.secondary : props.theme.bgColors.light.primary)
         };
         color: ${props => props.darkMode ?
-            props.theme.textColors.dark :
-            props.theme.textColors.light
+            (props.adaptableVariant === "secondary" ? props.theme.textColors.dark.secondary : props.theme.textColors.dark.primary) :
+            (props.adaptableVariant === "secondary" ? props.theme.textColors.light.secondary : props.theme.textColors.light.primary)
         };
-        font-size: 1em;
     }`;
 
     return function AdaptableComponent(props) {

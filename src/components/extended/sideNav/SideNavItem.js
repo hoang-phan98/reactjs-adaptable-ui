@@ -3,7 +3,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ListItemText from '@material-ui/core/ListItemText';
-import AdaptableListItem from "../adaptable/AdaptableListItem";
+import AdaptableListItem from "../../adaptable/AdaptableListItem";
 import { IconButton, Link, Divider } from "@material-ui/core";
 
 const SubMenu = ({ item }) => {
