@@ -24,16 +24,16 @@ const useStyles = makeStyles(() => ({
 export default function CovidInfo() {
     const classes = useStyles()
     return (
-        <AdaptablePaper elevation={20} className={classes.root} optional>
-            <AdaptablePaper elevation={0} className={classes.secondary}>
+        <AdaptablePaper elevation={20} className={classes.root} optional adaptableVariant="secondary">
+            <AdaptablePaper elevation={0} className={classes.secondary} adaptableVariant="secondary">
                 <Icon className={classes.item}>
                     <Warning />
                 </Icon>
-                <AdaptableTypography className={classes.item}>
+                <AdaptableTypography className={classes.item} adaptableVariant="secondary">
                     If your income has been affected by coronavirus (COVID-19), we might be able to help
                 </AdaptableTypography>
             </AdaptablePaper>
-            <AdaptablePaper className={classes.secondary}>
+            <AdaptablePaper className={classes.secondary} adaptableVariant="secondary">
                 <Link className={classes.item} color="inherit" variant="body2" > Find out what assistance might be available </Link>
                 <IconButton color="inherit" className={classes.item}>
                     <Launch />

@@ -7,22 +7,22 @@ import App from './App';
 const theme = {
   bgColors: {
     dark: {
-      primary: "#212121",
-      secondary: ""
+      primary: "#002984",
+      secondary: "#c7c7c7"
     },
     light: {
       primary: "#3f51b5",
-      secondary: ""
+      secondary: "#fafafa"
     },
   },
   textColors: {
     dark: {
-      primary: "#EEEEEE",
-      secondary: ""
+      primary: "white",
+      secondary: "black"
     },
     light: {
       primary: "white",
-      secondary: ""
+      secondary: "black"
     },
   },
   fonts: {
