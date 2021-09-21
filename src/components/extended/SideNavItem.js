@@ -11,7 +11,7 @@ const SubMenu = ({ item }) => {
 
     return (
         <>
-            <AdaptableListItem optional button onClick={() => setShowSubNav(!showSubNav)}>
+            <AdaptableListItem style={{ backgroundColor: '#0055B9'}} optional button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
                     <ListItemText variant="body1">
                         {item.title}
@@ -43,7 +43,7 @@ export const SideNavItem = ({ item }) => {
 
     return (
         <>
-            <AdaptableListItem button onClick={() => setShowSubNav(!showSubNav)}>
+            <AdaptableListItem style={{ backgroundColor: '#0055B9'}} button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
                     {item.icon}
                     <ListItemText variant="body1">
