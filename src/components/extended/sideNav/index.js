@@ -45,7 +45,7 @@ export default function AppSideNav(props) {
             <Divider />
             <SearchBar />
             <Divider />
-            <AdaptableList style={{backgroundColor: '#0055B9'}}>
+            <AdaptableList>
                 {SideNavData.map((item, index) => {
                     return <SideNavItem item={item} key={index} />;
                 })}
