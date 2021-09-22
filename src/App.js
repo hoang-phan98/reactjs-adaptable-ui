@@ -8,8 +8,13 @@ import CovidInfo from './components/extended/CovidInfo';
 import ViewPayments from './components/extended/ViewPayments';
 import { makeStyles } from '@material-ui/core';
 import Tasks from './components/extended/tasks';
+import Footer from './components/extended/Footer';
 
 const useStyles = makeStyles(() => ({
+  background: {
+    backgroundColor: 'none',
+    alignItems: 'center'
+  },
   root: {
     display: "inline-flex",
     width: "100%",
@@ -32,16 +37,20 @@ function App() {
       setDarkMode: () => dispatch(setDarkMode()),
     }}>
       <AppNavBar />
-      <div className={classes.root}>
-        <div className={classes.child}>
-          <FavouriteServices />
+      <div className={classes.background}>
+        <div className={classes.root}>
+          <div className={classes.child}>
+            <FavouriteServices />
+          </div>
+          <div className={classes.child}>
+            <CovidInfo />
+            <ViewPayments />
+          </div>
         </div>
-        <div className={classes.child}>
-          <CovidInfo />
-          <ViewPayments />
-        </div>
+        <Tasks />
+        <Footer />
       </div>
-      <Tasks/>
+
     </AdaptableContext.Provider>
   );
 }

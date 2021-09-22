@@ -28,6 +28,11 @@ const theme = {
   fonts: {
     default: "Arial",
     adhd_friendly: "sans-serif"
+  },
+  fontSize: {
+    small: "12px",
+    medium: "16px",
+    large: "20px"
   }
 }
 
