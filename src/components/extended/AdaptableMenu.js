@@ -123,9 +123,7 @@ export default function AdaptableMenu(props) {
             variant="persistent"
             anchor="right"
             open={showAdaptableMenu}>
-            <AdaptableBox style={{
-                   backgroundColor: '#0055B9'                  
-                }}>
+            <AdaptableBox>
                 <IconButton color="inherit" onClick={() => setShowAdaptableMenu(false)}>
                     <Typography align="right">Hide Menu</Typography>
                     <ChevronRightIcon />

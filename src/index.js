@@ -7,7 +7,7 @@ import App from './App';
 const theme = {
   bgColors: {
     dark: "#212121",
-    light: "#3f51b5",
+    light: "#0055B9",
   },
   textColors: {
     dark: "#EEEEEE",

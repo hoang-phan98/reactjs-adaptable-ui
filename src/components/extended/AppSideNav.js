@@ -36,7 +36,7 @@ export default function AppSideNav(props) {
             variant="persistent"
             anchor="left"
             open={showSideNav}>
-            <AdaptableBox style={{ backgroundColor: '#0055B9'}}>
+            <AdaptableBox>
                 <IconButton color="inherit" onClick={() => setShowSideNav(false)}>
                     <ChevronLeftIcon />
                     <Typography>Hide Menu</Typography>
@@ -45,7 +45,7 @@ export default function AppSideNav(props) {
             <Divider />
             <SearchBar />
             <Divider />
-            <AdaptableList style={{backgroundColor: '#0055B9'}}>
+            <AdaptableList>
                 {SideNavData.map((item, index) => {
                     return <SideNavItem item={item} key={index} />;
                 })}

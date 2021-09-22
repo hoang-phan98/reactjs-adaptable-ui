@@ -27,13 +27,13 @@ export default function AppNavBar() {
     return (
         <>
             <AdaptableAppBar className={classes.root}>
-                <AdaptableToolBar style={{backgroundColor: '#0055B9'}}>
+                <AdaptableToolBar>
                     <IconButton
                         color="inherit"
                         onClick={() => setShowSideNav(!showSideNav)}>
                         <MenuIcon />
                     </IconButton>
-                    <AdaptableButton style={{ backgroundColor: '#0055B9'}}>
+                    <AdaptableButton>
                         <img src={logo} style= {{ width: '60px', paddingRight:'10px'}}/>
                         <text style={{
                             fontFamily: 'Verdana', 
@@ -45,7 +45,7 @@ export default function AppNavBar() {
                     </AdaptableButton>
                     <AdaptableButton
                         onClick={() => setShowAdaptableMenu(!showAdaptableMenu)}
-                        style={{ marginLeft: 'auto', marginRight: '50px', backgroundColor: '#0055B9' }}>
+                        style={{ marginLeft: 'auto', marginRight: '50px' }}>
                         <FormatSizeIcon />
                         <text style={{ marginLeft: '5px' }}>Accessibility</text>
                     </AdaptableButton>
