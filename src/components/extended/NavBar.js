@@ -14,27 +14,25 @@ const useStyles = makeStyles(() => ({
     root: {
         position: "static",
     },
-
-
 }))
 
 export default function AppNavBar() {
     const classes = useStyles();
-    const [showSideNav, setShowSideNav] = useState(true);
+    const [showSideNav, setShowSideNav] = useState(false);
     const [showAdaptableMenu, setShowAdaptableMenu] = useState(false);
     
 
     return (
         <>
             <AdaptableAppBar className={classes.root}>
-                <AdaptableToolBar style={{backgroundColor: '#0055B9'}}>
+                <AdaptableToolBar>
                     <IconButton
                         color="inherit"
                         onClick={() => setShowSideNav(!showSideNav)}>
                         <MenuIcon />
                     </IconButton>
-                    <AdaptableButton style={{ backgroundColor: '#0055B9'}}>
-                        <img src={logo} style= {{ width: '60px', paddingRight:'10px'}}/>
+                    <AdaptableButton>
+                        <img src={logo} style= {{ width: '60px', paddingRight:'10px'}} alt="Centrelink"/>
                         <text style={{
                             fontFamily: 'Verdana', 
                             fontStyle: 'italic',
@@ -45,7 +43,7 @@ export default function AppNavBar() {
                     </AdaptableButton>
                     <AdaptableButton
                         onClick={() => setShowAdaptableMenu(!showAdaptableMenu)}
-                        style={{ marginLeft: 'auto', marginRight: '50px', backgroundColor: '#0055B9' }}>
+                        style={{ marginLeft: 'auto', marginRight: '10px' }}>
                         <FormatSizeIcon />
                         <text style={{ marginLeft: '5px' }}>Accessibility</text>
                     </AdaptableButton>

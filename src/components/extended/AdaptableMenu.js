@@ -11,17 +11,18 @@ import {
     FormControl,
     Switch,
     FormControlLabel,
-    Slider,
     RadioGroup,
     Radio,
     Select,
-    MenuItem
 } from '@material-ui/core';
 import AdaptableContext from '../../utils/adaptableContext';
 import AdaptableButton from '../adaptable/AdaptableButton';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import styled from 'styled-components';
+import AdaptablePaper from '../adaptable/AdaptablePaper';
+import AdaptableTypography from '../adaptable/AdaptableTypography';
+import AdaptableSlider from '../adaptable/AdaptableSlider';
+import AdaptableListItem from '../adaptable/AdaptableListItem';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -31,61 +32,49 @@ const useStyles = makeStyles(() => ({
         width: "25%",
         overflowY: "scroll"
     },
+    paper: {
+        padding: "10px",
+    },
     mark: {
         color: "#FFFFFF"
     },
     darkModeSelect: {
-        backgroundColor: "#373737",
-        borderColor: '#FFFFFF',
+        backgroundColor: "#002984",
         "&$selected": {
-            backgroundColor: "#373737"
+            backgroundColor: "#0055B9"
         },
         "&:hover": {
-            backgroundColor: "#373737"
+            backgroundColor: "#0055B9"
         },
         "&:focus": {
-            backgroundColor: "#373737"
+            backgroundColor: "#0055B9"
         }
     },
     lightModeSelect: {
-        backgroundColor: "#FFFFFF",
-        borderColor: '#000000',
+        backgroundColor: "#0055B9",
+        "&$selected": {
+            backgroundColor: "#0055B9"
+        },
+        "&:hover": {
+            backgroundColor: "#002984"
+        },
+        "&:focus": {
+            backgroundColor: "#002984"
+        }
     },
     toggleDarkMode: {
         "&&": {
-            backgroundColor: '#515151',
-            borderColor: '#FFFFFF',
+            backgroundColor: '#002984',
+            borderColor: 'white',
         }
     },
     toggleLightMode: {
         "&&": {
-            backgroundColor: '#D3D3D3',
-            borderColor: '#000000'
+            backgroundColor: '#0055B9',
+            borderColor: 'white'
         }
     }
 }));
-
-const StyledDiv = styled.div`
-    && {
-        background-color: ${props => props.darkMode ?
-        "#373737" :
-        "#FFFFFF"
-    };
-        color: ${props => props.darkMode ?
-        "#FFFFFF" :
-        "#000000"
-    };
-        padding: 15px;
-        height: inherit;
-    }
-`;
-
-export const StyledText = styled.text`
-    color: ${props => props.darkMode ?
-        props.theme.textColors.light :
-        '#000000'
-    };
-`;
 
 export default function AdaptableMenu(props) {
     const { darkMode, setDarkMode } = useContext(AdaptableContext);
@@ -123,16 +112,14 @@ export default function AdaptableMenu(props) {
             variant="persistent"
             anchor="right"
             open={showAdaptableMenu}>
-            <AdaptableBox style={{
-                   backgroundColor: '#0055B9'                  
-                }}>
+            <AdaptableBox>
                 <IconButton color="inherit" onClick={() => setShowAdaptableMenu(false)}>
                     <Typography align="right">Hide Menu</Typography>
                     <ChevronRightIcon />
                 </IconButton>
             </AdaptableBox>
             <Divider />
-            <StyledDiv darkMode={darkMode}>
+            <AdaptablePaper className={classes.paper}>
                 <Typography variant="h6"><b>Accessibility Menu</b></Typography>
                 <br />
                 <Typography paragraph align="justify">Would you like to go directly to accessibility settings, or answer a survey so we can enhance your user experience?</Typography>
@@ -144,10 +131,10 @@ export default function AdaptableMenu(props) {
                     sx={{ width: '75%' }}
                 >
                     <ToggleButton value="settings" aria-label="centered" classes={darkMode ? { selected: classes.toggleDarkMode } : { selected: classes.toggleLightMode }}>
-                        <StyledText darkMode={darkMode}>Go to settings</StyledText>
+                        <AdaptableTypography>Go to settings</AdaptableTypography>
                     </ToggleButton>
                     <ToggleButton value="survey" aria-label="left aligned" classes={darkMode ? { selected: classes.toggleDarkMode } : { selected: classes.toggleLightMode }}>
-                        <StyledText darkMode={darkMode}>Answer questions</StyledText>
+                        <AdaptableTypography>Answer questions</AdaptableTypography>
                     </ToggleButton>
                 </ToggleButtonGroup>
                 <br />
@@ -169,7 +156,7 @@ export default function AdaptableMenu(props) {
                             <br />
                             <Typography paragraph>Text size</Typography>
                             <div style={{ marginLeft: '20px' }}>
-                                <Slider
+                                <AdaptableSlider
                                     aria-label="TextSize"
                                     defaultValue={50}
                                     valueLabelDisplay="auto"
@@ -178,8 +165,7 @@ export default function AdaptableMenu(props) {
                                     min={0}
                                     max={100}
                                     onChange={(e) => console.log(e)}//change this to update the text size in context
-                                    color={darkMode ? "secondary" : "primary"}
-                                    classes={darkMode ? { markLabel: classes.mark } : {}}
+                                    classes={{ markLabel: classes.mark }}
                                 />
                             </div>
                             <br />
@@ -203,19 +189,17 @@ export default function AdaptableMenu(props) {
                             <br />
                             <Typography paragraph>Font style</Typography>
                             <Select
-                                labelId="demo-simple-select-standard-label"
-                                id="demo-simple-select-standard"
                                 value={"standard"} //change this to read font from context
                                 variant="outlined"
-                                color={darkMode ? "secondary" : "primary"}
                                 onChange={e => console.log(e)} //change this to set the font style value
-                                label="font"
                                 className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
                             >
-                                <MenuItem value={'standard'} className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
-                                ><StyledText darkMode={darkMode}>Standard font</StyledText></MenuItem>
-                                <MenuItem value={'adhd font'} className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
-                                ><StyledText darkMode={darkMode}>ADHD/Dyslexia-friendly font</StyledText></MenuItem>
+                                <AdaptableListItem value={'standard'}>
+                                    <AdaptableTypography style={{backgroundColor: "inherit"}} >Standard font</AdaptableTypography>
+                                </AdaptableListItem>
+                                <AdaptableListItem value={'adhd font'}>
+                                    <AdaptableTypography style={{backgroundColor: "inherit"}}>ADHD/Dyslexia-friendly font</AdaptableTypography>
+                                </AdaptableListItem>
                             </Select>
                         </FormControl>
                     </>
@@ -264,7 +248,7 @@ export default function AdaptableMenu(props) {
                         </AdaptableButton>
                     </>
                 )}
-            </StyledDiv>
+            </AdaptablePaper>
         </Drawer>
     );
 }
