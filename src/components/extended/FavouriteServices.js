@@ -1,4 +1,4 @@
-import { Divider, Grid, IconButton, ListItemText, makeStyles } from "@material-ui/core";
+import { Divider, Grid, IconButton, makeStyles } from "@material-ui/core";
 import React from "react";
 import AdaptableList from "../adaptable/AdaptableList";
 import AdaptablePaper from "../adaptable/AdaptablePaper";
@@ -8,8 +8,9 @@ import ArrowRight from "@material-ui/icons/ArrowRight";
 
 const useStyles = makeStyles(() => ({
     root: {
+        height: "90%",
         margin: "10px",
-        padding: "10px"
+        padding: "10px",
     },
     heading: {
         margin: "10px"
@@ -38,9 +39,9 @@ export default function FavouriteServices() {
                                 <IconButton color="inherit">
                                     <ArrowRight />
                                 </IconButton>
-                                <ListItemText variant="body1">
+                                <AdaptableTypography variant="body1">
                                     Upload Document
-                                </ListItemText>
+                                </AdaptableTypography>
                             </>
                         </AdaptableListItem>
                         <AdaptableListItem button>
@@ -48,9 +49,9 @@ export default function FavouriteServices() {
                                 <IconButton color="inherit">
                                     <ArrowRight />
                                 </IconButton>
-                                <ListItemText variant="body1">
+                                <AdaptableTypography variant="body1">
                                     Manage Deductions
-                                </ListItemText>
+                                </AdaptableTypography>
                             </>
                         </AdaptableListItem>
                     </AdaptableList>
@@ -62,9 +63,9 @@ export default function FavouriteServices() {
                                 <IconButton color="inherit">
                                     <ArrowRight />
                                 </IconButton>
-                                <ListItemText variant="body1">
+                                <AdaptableTypography variant="body1">
                                     Manage Advance Payments
-                                </ListItemText>
+                                </AdaptableTypography>
                             </>
                         </AdaptableListItem>
                         <AdaptableListItem button>
@@ -72,9 +73,9 @@ export default function FavouriteServices() {
                                 <IconButton color="inherit">
                                     <ArrowRight />
                                 </IconButton>
-                                <ListItemText variant="body1">
+                                <AdaptableTypography variant="body1">
                                     Manage Appointments
-                                </ListItemText>
+                                </AdaptableTypography>
                             </>
                         </AdaptableListItem>
                     </AdaptableList>

@@ -16,6 +16,12 @@ const makeAdaptable = (component) => {
             (props.adaptableVariant === "secondary" ? props.theme.textColors.dark.secondary : props.theme.textColors.dark.primary) :
             (props.adaptableVariant === "secondary" ? props.theme.textColors.light.secondary : props.theme.textColors.light.primary)
         };
+        font-size: ${
+            props => props.fontSize ? props.fontSize : '20px'
+        };
+        font-family: ${
+            props => props.fontFamily ? props.fontFamily : 'Arial'
+        };
     }`;
 
     return function AdaptableComponent(props) {
