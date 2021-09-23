@@ -11,6 +11,10 @@ const useStyles = makeStyles(() => ({
     },
     child: {
         marginTop: "5px"
+    },
+    listItemText: {
+        fontSize: "inherit",
+        fontFamily: "inherit"
     }
 }))
 
@@ -22,7 +26,7 @@ export default function ViewPayments() {
             <AdaptableListItem button className={classes.child}>
                 <>
                     <AttachMoney color="inherit" />
-                    <ListItemText color="inherit" >
+                    <ListItemText color="inherit" classes={{primary: classes.listItemText}}>
                         View Payment history
                     </ListItemText>
                     <AdaptableButton
@@ -36,7 +40,7 @@ export default function ViewPayments() {
             <AdaptableListItem button className={classes.child}>
                 <>
                     <AttachMoney color="inherit" />
-                    <ListItemText >
+                    <ListItemText classes={{primary: classes.listItemText}}>
                         Make a claim or view claim status
                     </ListItemText>
                     <AdaptableButton

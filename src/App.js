@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { setDarkMode } from './store/actions/adaptableActions';
+import { setDarkMode, setFontFamily, setFontSize } from './store/actions/adaptableActions';
 import { adaptableReducer, initialState } from './store/reducers/adaptableReducers';
 import AdaptableContext from './utils/adaptableContext';
 import AppNavBar from './components/extended/NavBar';
@@ -13,7 +13,8 @@ import Footer from './components/extended/Footer';
 const useStyles = makeStyles(() => ({
   background: {
     backgroundColor: 'none',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: "75px"
   },
   root: {
     display: "inline-flex",
@@ -34,7 +35,11 @@ function App() {
   return (
     <AdaptableContext.Provider value={{
       darkMode: state.dark_mode,
+      fontSize: state.font_size,
+      fontFamily: state.font_family,
       setDarkMode: () => dispatch(setDarkMode()),
+      setFontSize: (fontSize) => dispatch(setFontSize(fontSize)),
+      setFontFamily: (fontFamily) => dispatch(setFontFamily(fontFamily))
     }}>
       <AppNavBar />
       <div className={classes.background}>

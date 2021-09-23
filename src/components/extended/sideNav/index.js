@@ -15,9 +15,8 @@ import SearchBar from '../SearchBar';
 
 const useStyles = makeStyles(() => ({
     root: {
-        margin: "7px",
         top: "auto",
-        height: "calc(100vh - 100px)",
+        height: "calc(100vh - 75px)",
         overflowY: "scroll",
         width: "25%",
     }

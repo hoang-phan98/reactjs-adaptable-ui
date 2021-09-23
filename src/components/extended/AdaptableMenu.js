@@ -26,9 +26,8 @@ import AdaptableListItem from '../adaptable/AdaptableListItem';
 
 const useStyles = makeStyles(() => ({
     root: {
-        margin: "5px",
         top: "auto",
-        height: "calc(100vh - 100px)",
+        height: "calc(100vh - 75px)",
         width: "25%",
         overflowY: "scroll"
     },

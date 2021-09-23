@@ -17,7 +17,12 @@ const useStyles = makeStyles(() => ({
         alignItems: "center",
     },
     item: {
-        margin: "5px"
+        margin: "5px",
+    },
+    link: {
+        margin: "5px",
+        fontSize: "inherit",
+        fontFamily: "inherit"
     }
 }))
 
@@ -34,7 +39,7 @@ export default function CovidInfo() {
                 </AdaptableTypography>
             </AdaptablePaper>
             <AdaptablePaper className={classes.secondary} adaptableVariant="secondary">
-                <Link className={classes.item} color="inherit" variant="body2" > Find out what assistance might be available </Link>
+                <Link className={classes.link} color="inherit" variant="body2" > Find out what assistance might be available </Link>
                 <IconButton color="inherit" className={classes.item}>
                     <Launch />
                 </IconButton>

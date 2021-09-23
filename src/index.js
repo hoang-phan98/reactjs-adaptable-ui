@@ -12,7 +12,7 @@ const theme = {
     },
     light: {
       primary: "#0055B9",
-      secondary: "#fafafa"
+      secondary: "#FFFFFF"
     },
   },
   textColors: {
@@ -30,9 +30,9 @@ const theme = {
     adhd_friendly: "sans-serif"
   },
   fontSize: {
-    small: "12px",
-    medium: "16px",
-    large: "20px"
+    small: "16px",
+    medium: "20px",
+    large: "24px"
   }
 }
 

@@ -12,7 +12,9 @@ import logo from '../images/logo.png';
 
 const useStyles = makeStyles(() => ({
     root: {
-        position: "static",
+        position: "fixed",
+        height: "75px",
+        borderBottom: "2px solid white"
     },
 }))
 

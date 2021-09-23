@@ -12,7 +12,13 @@ const useStyles = makeStyles(() => ({
         marginLeft: "10px"
     },
     secondary: {
-        color: "white"
+        fontSize: "60%",
+        color: "white",
+        fontFamily: "inherit"
+    },
+    listItemText: {
+        fontSize: "inherit",
+        fontFamily: "inherit"
     }
 }))
 
@@ -25,6 +31,7 @@ export default function TaskItem({item}) {
                 <ListItemText 
                     classes={{
                         root: classes.padding,
+                        primary: classes.listItemText,
                         secondary: classes.secondary
                     }} 
                     color="inherit" 
