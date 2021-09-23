@@ -33,6 +33,7 @@ export default function TaskItem({item}) {
                 <AdaptableButton
                     variant="contained"
                     endIcon={<ArrowRight />}
+                    
                 >
                     Start Task
                 </AdaptableButton>

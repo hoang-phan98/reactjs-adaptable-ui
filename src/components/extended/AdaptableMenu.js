@@ -24,6 +24,7 @@ import AdaptableTypography from '../adaptable/AdaptableTypography';
 import AdaptableSlider from '../adaptable/AdaptableSlider';
 import AdaptableListItem from '../adaptable/AdaptableListItem';
 
+
 const useStyles = makeStyles(() => ({
     root: {
         margin: "5px",
@@ -73,7 +74,35 @@ const useStyles = makeStyles(() => ({
             backgroundColor: '#0055B9',
             borderColor: 'white'
         }
-    }
+    },
+
+    ListItem: {
+        root: {
+            "&$selected": {
+              backgroundColor: "primary",
+              color: "primary",
+              "& .MuiListItemIcon-root": {
+                color: "primary"
+              }
+            },
+            "&$selected:hover": {
+              backgroundColor: "secondary",
+              color: "secondary",
+              "& .MuiListItemIcon-root": {
+                color: "secondary"
+              }
+            },
+            "&:hover": {
+              backgroundColor: "blue",
+              color: "white",
+              "& .MuiListItemIcon-root": {
+                color: "white"
+              }
+            }
+        }
+
+    },
+
 }));
 
 export default function AdaptableMenu(props) {
@@ -145,10 +174,10 @@ export default function AdaptableMenu(props) {
                         <br />
                         <FormControl component="fieldset">
                             <Typography paragraph>Contrast</Typography>
-                            <FormControlLabel
+                            <FormControlLabel 
                                 value={darkMode}
                                 checked={darkMode}
-                                control={<Switch color={darkMode ? "secondary" : "primary"} />}
+                                control={<Switch color={darkMode ? "secondary" : "primary"}/>}
                                 label="Dark mode"
                                 labelPlacement="end"
                                 onChange={e => setDarkMode(!darkMode)}
@@ -188,13 +217,17 @@ export default function AdaptableMenu(props) {
                             />
                             <br />
                             <Typography paragraph>Font style</Typography>
-                            <Select
+                            <Select 
                                 value={"standard"} //change this to read font from context
                                 variant="outlined"
                                 onChange={e => console.log(e)} //change this to set the font style value
                                 className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
+                                MenuProps={{
+                                    MenuListProps: {
+                                      disablePadding: true
+                                  }}}                                
                             >
-                                <AdaptableListItem value={'standard'}>
+                                <AdaptableListItem value={'standard'} > 
                                     <AdaptableTypography style={{backgroundColor: "inherit"}} >Standard font</AdaptableTypography>
                                 </AdaptableListItem>
                                 <AdaptableListItem value={'adhd font'}>
