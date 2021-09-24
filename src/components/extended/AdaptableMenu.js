@@ -74,33 +74,10 @@ const useStyles = makeStyles(() => ({
             borderColor: 'white'
         }
     },
+    radioButton: {
+        color: "#FFFFFF"
+    }
 
-    ListItem: {
-        root: {
-            "&$selected": {
-              backgroundColor: "primary",
-              color: "primary",
-              "& .MuiListItemIcon-root": {
-                color: "primary"
-              }
-            },
-            "&$selected:hover": {
-              backgroundColor: "secondary",
-              color: "secondary",
-              "& .MuiListItemIcon-root": {
-                color: "secondary"
-              }
-            },
-            "&:hover": {
-              backgroundColor: "blue",
-              color: "white",
-              "& .MuiListItemIcon-root": {
-                color: "white"
-              }
-            }
-        }
-
-    },
 
 }));
 
@@ -242,40 +219,40 @@ export default function AdaptableMenu(props) {
                         <br />
                         <Typography paragraph>Do you have low vision?</Typography>
                         <RadioGroup row aria-label="lowVision" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowVision")} value={surveyQuestions["lowVision"]}>
-                            <FormControlLabel value={true} control={<Radio />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
                         </RadioGroup>
                         {surveyQuestions["lowVision"] && <Typography paragraph><i>Ok, we will increase text size.</i></Typography>}
                         <br />
                         <Typography paragraph>Do you have photophobia (sensitivity to light)?</Typography>
                         <RadioGroup row aria-label="photophobic" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "photophobic")} value={surveyQuestions["photophobic"]}>
-                            <FormControlLabel value={true} control={<Radio />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
                         </RadioGroup>
                         {surveyQuestions["photophobic"] && <Typography paragraph><i>Ok, we will activate dark mode.</i></Typography>}
                         <br />
                         <Typography paragraph>Do you have a low level of language proficiency?</Typography>
                         <RadioGroup row aria-label="lowLanguageProficiency" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowLanguageProficiency")} value={surveyQuestions["lowLanguageProficiency"]}>
-                            <FormControlLabel value={true} control={<Radio />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
                         </RadioGroup>
                         {surveyQuestions["lowLanguageProficiency"] && <Typography paragraph><i>Ok, we will simplify the text to a lower proficiency.</i></Typography>}
                         <br />
                         <Typography paragraph>Do you have ADHD?</Typography>
                         <RadioGroup row aria-label="ADHD" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "ADHD")} value={surveyQuestions["ADHD"]}>
-                            <FormControlLabel value={true} control={<Radio />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
                         </RadioGroup>
                         {surveyQuestions["ADHD"] && <Typography paragraph><i>Ok, we will minimize clutter, by eliminating unnecessary components on the page.</i></Typography>}
                         <br />
                         <Typography paragraph>Are you an elderly person (aged over 60)?</Typography>
                         <RadioGroup row aria-label="elderly" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "elderly")} value={surveyQuestions["elderly"]}>
-                            <FormControlLabel value={true} control={<Radio />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
                         </RadioGroup>
                         {surveyQuestions["elderly"] && <Typography paragraph><i>Ok, we will ensure text size is big enough, and remove unnecessary elements.</i></Typography>}
                         <br />
-                        <AdaptableButton onClick={handleSettings}>
+                        <AdaptableButton onClick={handleSettings} style= {{backgroundColor: "#00194f"}}>
                             Apply changes to settings
                         </AdaptableButton>
                     </>
