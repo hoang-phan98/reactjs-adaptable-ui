@@ -22,25 +22,28 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-export default function TaskItem({item}) {
+export default function TaskItem(props) {
     const classes = useStyles()
+    const { task, removeTask } = props
     return (
         <AdaptableListItem >
             <>
                 <ErrorOutline className={classes.padding} color="inherit" />
-                <ListItemText 
+                <ListItemText
                     classes={{
                         root: classes.padding,
                         primary: classes.listItemText,
                         secondary: classes.secondary
-                    }} 
-                    color="inherit" 
-                    primary={item.primary} 
-                    secondary={item.secondary}/>
+                    }}
+                    color="inherit"
+                    primary={task.primary}
+                    secondary={task.secondary} />
                 <AdaptableButton
                     variant="contained"
                     endIcon={<ArrowRight />}
-                    
+                    onClick={() => {
+                        removeTask(task.id)
+                    }}
                 >
                     Start Task
                 </AdaptableButton>

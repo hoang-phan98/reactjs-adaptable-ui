@@ -1,5 +1,5 @@
 import { Divider, Grid, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import AdaptablePaper from "../../adaptable/AdaptablePaper";
 import AdaptableTypography from "../../adaptable/AdaptableTypography";
 import { TaskData } from "./TaskData";
@@ -20,7 +20,16 @@ const useStyles = makeStyles(() => ({
 
 export default function Tasks() {
     const classes = useStyles()
-    const optional = TaskData.length === 0
+    const [tasks, setTasks] = useState(TaskData)
+    const optional = tasks.length === 0
+
+    const removeTask = (index) => {
+        setTasks(
+            tasks.filter((task) => {
+                return task.id !== index
+            })
+        )
+    }
 
     return (
         <AdaptablePaper className={classes.root} optional={optional}>
@@ -32,10 +41,10 @@ export default function Tasks() {
                     <Divider classes={{ root: classes.divider }} />
                 </Grid>
                 {
-                    TaskData.map((item, index) => {
+                    tasks.map((item, index) => {
                         return (
-                            <Grid item xs={6}>
-                                <TaskItem item={item} key={index} />
+                            <Grid item xs={6} key={index}>
+                                <TaskItem task={item} removeTask={removeTask}/>
                             </Grid>
                         )
                     })
