@@ -6,7 +6,6 @@ import {
     Drawer,
     IconButton,
     makeStyles,
-    Typography,
     Divider,
     FormControl,
     Switch,
@@ -82,7 +81,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function AdaptableMenu(props) {
-    const { darkMode, setDarkMode } = useContext(AdaptableContext);
+    const { darkMode, setDarkMode, fontSize, setFontSize, fontFamily, setFontFamily } = useContext(AdaptableContext);
     const { showAdaptableMenu, setShowAdaptableMenu } = props.adaptableMenuState;
     const classes = useStyles();
     const [initialQuestion, setInitialQuestionAnswer] = useState(null);
@@ -101,11 +100,11 @@ export default function AdaptableMenu(props) {
     }
 
     const handleSettings = () => {
-        //surveyQuestions["lowVision"] -> call function to set text size as large if true
+        surveyQuestions["lowVision"] && setFontSize('large');
         surveyQuestions["photophobic"] && !darkMode && setDarkMode(true);
         //surveyQuestions["lowLanguageProficiency"] -> call function to set simplicity of text, if true
-        //surveyQuestions["ADHD"] -> call function to minimize elements if true
-        //surveyQuestions["elderly"] -> call function to set text size as large if true, and minimise the unnecessary elements
+        surveyQuestions["ADHD"] && setFontFamily('Comic Sans MS');//also call function to minimize elements if true
+        surveyQuestions["elderly"] && setFontSize('large'); // also call function to minimise the unnecessary elements
     }
 
     return (
@@ -119,15 +118,15 @@ export default function AdaptableMenu(props) {
             open={showAdaptableMenu}>
             <AdaptableBox>
                 <IconButton color="inherit" onClick={() => setShowAdaptableMenu(false)}>
-                    <Typography align="right">Hide Menu</Typography>
+                    <AdaptableTypography align="right">Hide Menu</AdaptableTypography>
                     <ChevronRightIcon />
                 </IconButton>
             </AdaptableBox>
             <Divider />
             <AdaptablePaper className={classes.paper}>
-                <Typography variant="h6"><b>Accessibility Menu</b></Typography>
+                <AdaptableTypography variant="h6"><b>Accessibility Menu</b></AdaptableTypography>
                 <br />
-                <Typography paragraph align="justify">Would you like to go directly to accessibility settings, or answer a survey so we can enhance your user experience?</Typography>
+                <AdaptableTypography paragraph align="justify">Would you like to go directly to accessibility settings, or answer a survey so we can enhance your user experience?</AdaptableTypography>
                 <ToggleButtonGroup
                     value={initialQuestion}
                     exclusive
@@ -146,35 +145,38 @@ export default function AdaptableMenu(props) {
                 <br />
                 {initialQuestion === 'settings' && (
                     <>
-                        <Typography variant="h6">Settings</Typography>
+                        <AdaptableTypography variant="h6">Settings</AdaptableTypography>
                         <br />
                         <FormControl component="fieldset">
-                            <Typography paragraph>Contrast</Typography>
-                            <FormControlLabel 
+                            <AdaptableTypography paragraph>Contrast</AdaptableTypography>
+                            <FormControlLabel
                                 value={darkMode}
                                 checked={darkMode}
-                                control={<Switch color={darkMode ? "secondary" : "primary"}/>}
+                                control={<Switch color={darkMode ? "secondary" : "primary"} />}
                                 label="Dark mode"
                                 labelPlacement="end"
                                 onChange={e => setDarkMode(!darkMode)}
                             />
                             <br />
-                            <Typography paragraph>Text size</Typography>
+                            <AdaptableTypography paragraph>Text size</AdaptableTypography>
                             <div style={{ marginLeft: '20px' }}>
                                 <AdaptableSlider
                                     aria-label="TextSize"
-                                    defaultValue={50}
+                                    defaultValue={10}
+                                    value={fontSize === 'small' ? 0 : (fontSize === 'medium' || fontSize === null) ? 10 : fontSize === 'large' ? 20 : 30}
                                     valueLabelDisplay="auto"
-                                    step={50} //change this to read the text size from context
-                                    marks={[{ value: 0, label: 'Small' }, { value: 50, label: 'Normal' }, { value: 100, label: 'Large' }]}
+                                    step={10}
+                                    marks={[{ value: 0, label: 'Small' }, { value: 10, label: 'Normal' }, { value: 20, label: 'Large' }, { value: 30, label: 'X-Large' }]}
                                     min={0}
-                                    max={100}
-                                    onChange={(e) => console.log(e)}//change this to update the text size in context
+                                    max={30}
+                                    onChange={(event, value) => {
+                                        setFontSize(value === 0 ? 'small' : value === 10 ? 'medium' : value === 20 ? 'large' : 'x-large')
+                                    }}
                                     classes={{ markLabel: classes.mark }}
                                 />
                             </div>
                             <br />
-                            <Typography paragraph>Non-essential page elements</Typography>
+                            <AdaptableTypography paragraph>Non-essential page elements</AdaptableTypography>
                             <FormControlLabel
                                 value={false} //change this to read boolean hide from context
                                 control={<Switch color={darkMode ? "secondary" : "primary"} />}
@@ -183,7 +185,7 @@ export default function AdaptableMenu(props) {
                                 onChange={e => console.log("Clicked me")} //change this to set the boolean hide value
                             />
                             <br />
-                            <Typography paragraph>English language proficiency</Typography>
+                            <AdaptableTypography paragraph>English language proficiency</AdaptableTypography>
                             <FormControlLabel
                                 value={false} //change this to read boolean easyTextMode from context
                                 control={<Switch color={darkMode ? "secondary" : "primary"} />}
@@ -192,22 +194,23 @@ export default function AdaptableMenu(props) {
                                 onChange={e => console.log("Clicked me")} //change this to set the boolean easyTextMode value
                             />
                             <br />
-                            <Typography paragraph>Font style</Typography>
-                            <Select 
-                                value={"standard"} //change this to read font from context
+                            <AdaptableTypography paragraph>Font style</AdaptableTypography>
+                            <Select
+                                value={fontFamily ?? 'Arial'}
                                 variant="outlined"
-                                onChange={e => console.log(e)} //change this to set the font style value
+                                onChange={e => setFontFamily(e.target.value)}
                                 className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
                                 MenuProps={{
                                     MenuListProps: {
-                                      disablePadding: true
-                                  }}}                                
+                                        disablePadding: true
+                                    }
+                                }}
                             >
-                                <AdaptableListItem value={'standard'} > 
-                                    <AdaptableTypography style={{backgroundColor: "inherit"}} >Standard font</AdaptableTypography>
+                                <AdaptableListItem value={'Arial'} >
+                                    <AdaptableTypography style={{ backgroundColor: "inherit" }} >Standard font</AdaptableTypography>
                                 </AdaptableListItem>
-                                <AdaptableListItem value={'adhd font'}>
-                                    <AdaptableTypography style={{backgroundColor: "inherit"}}>ADHD/Dyslexia-friendly font</AdaptableTypography>
+                                <AdaptableListItem value={'Comic Sans MS'}>
+                                    <AdaptableTypography style={{ backgroundColor: "inherit" }}>ADHD/Dyslexia-friendly font</AdaptableTypography>
                                 </AdaptableListItem>
                             </Select>
                         </FormControl>
@@ -215,44 +218,44 @@ export default function AdaptableMenu(props) {
                 )}
                 {initialQuestion === 'survey' && (
                     <>
-                        <Typography variant="h6">Survey</Typography>
+                        <AdaptableTypography variant="h6">Survey</AdaptableTypography>
                         <br />
-                        <Typography paragraph>Do you have low vision?</Typography>
+                        <AdaptableTypography paragraph>Do you have low vision?</AdaptableTypography>
                         <RadioGroup row aria-label="lowVision" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowVision")} value={surveyQuestions["lowVision"]}>
-                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["lowVision"] && <Typography paragraph><i>Ok, we will increase text size.</i></Typography>}
+                        {surveyQuestions["lowVision"] && <AdaptableTypography paragraph><i>Ok, we will increase text size.</i></AdaptableTypography>}
                         <br />
-                        <Typography paragraph>Do you have photophobia (sensitivity to light)?</Typography>
+                        <AdaptableTypography paragraph>Do you have photophobia (sensitivity to light)?</AdaptableTypography>
                         <RadioGroup row aria-label="photophobic" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "photophobic")} value={surveyQuestions["photophobic"]}>
-                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["photophobic"] && <Typography paragraph><i>Ok, we will activate dark mode.</i></Typography>}
+                        {surveyQuestions["photophobic"] && <AdaptableTypography paragraph><i>Ok, we will activate dark mode.</i></AdaptableTypography>}
                         <br />
-                        <Typography paragraph>Do you have a low level of language proficiency?</Typography>
+                        <AdaptableTypography paragraph>Do you have a low level of language proficiency?</AdaptableTypography>
                         <RadioGroup row aria-label="lowLanguageProficiency" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowLanguageProficiency")} value={surveyQuestions["lowLanguageProficiency"]}>
-                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["lowLanguageProficiency"] && <Typography paragraph><i>Ok, we will simplify the text to a lower proficiency.</i></Typography>}
+                        {surveyQuestions["lowLanguageProficiency"] && <AdaptableTypography paragraph><i>Ok, we will simplify the text to a lower proficiency.</i></AdaptableTypography>}
                         <br />
-                        <Typography paragraph>Do you have ADHD?</Typography>
+                        <AdaptableTypography paragraph>Do you have ADHD?</AdaptableTypography>
                         <RadioGroup row aria-label="ADHD" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "ADHD")} value={surveyQuestions["ADHD"]}>
-                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["ADHD"] && <Typography paragraph><i>Ok, we will minimize clutter, by eliminating unnecessary components on the page.</i></Typography>}
+                        {surveyQuestions["ADHD"] && <AdaptableTypography paragraph><i>Ok, we will change font, and also minimize clutter by eliminating unnecessary components on the page.</i></AdaptableTypography>}
                         <br />
-                        <Typography paragraph>Are you an elderly person (aged over 60)?</Typography>
+                        <AdaptableTypography paragraph>Are you over 60 years of age?</AdaptableTypography>
                         <RadioGroup row aria-label="elderly" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "elderly")} value={surveyQuestions["elderly"]}>
-                            <FormControlLabel value={true} control={<Radio style = {{color: "#FFF"}} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style = {{color: "#FFF"}} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["elderly"] && <Typography paragraph><i>Ok, we will ensure text size is big enough, and remove unnecessary elements.</i></Typography>}
+                        {surveyQuestions["elderly"] && <AdaptableTypography paragraph><i>Ok, we will ensure text size is big enough, and remove unnecessary elements.</i></AdaptableTypography>}
                         <br />
-                        <AdaptableButton onClick={handleSettings} style= {{backgroundColor: "#00194f"}}>
+                        <AdaptableButton onClick={handleSettings} style={{ backgroundColor: "#00194f" }}>
                             Apply changes to settings
                         </AdaptableButton>
                     </>

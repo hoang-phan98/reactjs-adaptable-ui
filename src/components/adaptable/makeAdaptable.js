@@ -8,7 +8,7 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 const makeAdaptable = (component) => {
     const StyledComponent = styled(component)`
     && {
-        background-color: ${ props => props.darkMode ?
+        background-color: ${props => props.darkMode ?
             (props.adaptableVariant === "secondary" ? props.theme.bgColors.dark.secondary : props.theme.bgColors.dark.primary) :
             (props.adaptableVariant === "secondary" ? props.theme.bgColors.light.secondary : props.theme.bgColors.light.primary)
         };
@@ -16,20 +16,18 @@ const makeAdaptable = (component) => {
             (props.adaptableVariant === "secondary" ? props.theme.textColors.dark.secondary : props.theme.textColors.dark.primary) :
             (props.adaptableVariant === "secondary" ? props.theme.textColors.light.secondary : props.theme.textColors.light.primary)
         };
-        font-size: ${
-            props => props.fontSize ? props.fontSize : '20px'
+        font-size: ${props => props.fontSize ? props.fontSize : 'medium'
         };
-        font-family: ${
-            props => props.fontFamily ? props.fontFamily : 'Arial'
+        font-family: ${props => props.fontFamily ? props.fontFamily : 'Arial'
         };
     }`;
 
     return function AdaptableComponent(props) {
-        const { darkMode } = useContext(AdaptableContext)
+        const { darkMode, fontSize, fontFamily } = useContext(AdaptableContext)
         const [show, setShow] = useState(true);
 
         return (
-            <StyledComponent darkMode={darkMode} {...props}>
+            <StyledComponent darkMode={darkMode} fontSize={fontSize} fontFamily={fontFamily} {...props}>
                 {props.optional ? (
                     <React.Fragment>
                         <IconButton color="inherit" onClick={(e) => {
