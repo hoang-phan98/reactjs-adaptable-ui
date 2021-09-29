@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import AdaptableContext from '../../utils/adaptableContext';
+import AdaptableContext from './adaptableContext';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';

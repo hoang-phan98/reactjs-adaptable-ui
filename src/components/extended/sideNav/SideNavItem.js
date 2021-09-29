@@ -11,7 +11,7 @@ const SubMenu = ({ item }) => {
 
     return (
         <>
-            <AdaptableListItem optional button onClick={() => setShowSubNav(!showSubNav)}>
+            <AdaptableListItem adaptableVariant="secondary" optional button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
                     <ListItemText variant="body1">
                         {item.title}
@@ -26,7 +26,7 @@ const SubMenu = ({ item }) => {
                 {showSubNav && item.subNav ?
                     item.subNav.map((item, index) => {
                         return (
-                            <AdaptableListItem optional>
+                            <AdaptableListItem adaptableVariant="secondary" optional>
                                 <Link color="inherit" variant="body2" key={index}> {item.title} </Link>
                             </AdaptableListItem>
                         )

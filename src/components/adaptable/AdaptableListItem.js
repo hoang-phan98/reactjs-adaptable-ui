@@ -1,4 +1,4 @@
-import makeAdaptable from './makeAdaptable';
+import makeAdaptable from '../../utils/makeAdaptable';
 import { ListItem } from '@material-ui/core';
 
 export default makeAdaptable(ListItem);
