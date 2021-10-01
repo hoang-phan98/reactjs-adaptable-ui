@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import styled from "styled-components";
 
 import AdaptableBox from '../adaptable/AdaptableBox';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -13,6 +14,7 @@ import {
     RadioGroup,
     Radio,
     Select,
+    TextField
 } from '@material-ui/core';
 import AdaptableContext from '../../utils/adaptableContext';
 import AdaptableButton from '../adaptable/AdaptableButton';
@@ -52,7 +54,7 @@ const useStyles = makeStyles(() => ({
     lightModeSelect: {
         backgroundColor: "#0055B9",
         "&$selected": {
-            backgroundColor: "#0055B9"
+            backgroundColor: "#002984"
         },
         "&:hover": {
             backgroundColor: "#002984"
@@ -75,10 +77,16 @@ const useStyles = makeStyles(() => ({
     },
     radioButton: {
         color: "#FFFFFF"
+    },
+    input: {
+        color: 'white'
     }
-
-
 }));
+
+const WhiteBorderTextField = styled(TextField)`
+    color: white;
+    border: solid 2px white;
+`;
 
 export default function AdaptableMenu(props) {
     const { darkMode, setDarkMode, fontSize, setFontSize, fontFamily, setFontFamily } = useContext(AdaptableContext);
@@ -90,12 +98,18 @@ export default function AdaptableMenu(props) {
         lowLanguageProficiency: null,
         lowVision: null,
         ADHD: null,
-        elderly: null
+        elderly: null,
+        age: null
     });
 
     const onChangeSurveyQuestions = (value, name) => {
-        const updatedSurveyQuestions = { ...surveyQuestions };
-        updatedSurveyQuestions[name] = value;
+        let updatedSurveyQuestions = { ...surveyQuestions };
+        if (name === 'age') {
+            updatedSurveyQuestions['age'] = value;
+            updatedSurveyQuestions['elderly'] = Number(value) >= 60
+        } else {
+            updatedSurveyQuestions[name] = value;
+        }
         setSurveyQuestions(updatedSurveyQuestions);
     }
 
@@ -248,12 +262,10 @@ export default function AdaptableMenu(props) {
                         </RadioGroup>
                         {surveyQuestions["ADHD"] && <AdaptableTypography paragraph><i>Ok, we will change font, and also minimize clutter by eliminating unnecessary components on the page.</i></AdaptableTypography>}
                         <br />
-                        <AdaptableTypography paragraph>Are you over 60 years of age?</AdaptableTypography>
-                        <RadioGroup row aria-label="elderly" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "elderly")} value={surveyQuestions["elderly"]}>
-                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
-                        </RadioGroup>
+                        <AdaptableTypography paragraph>How old are you?</AdaptableTypography>
+                        <WhiteBorderTextField value={surveyQuestions["age"]} onChange={e => onChangeSurveyQuestions(e.target.value, "age")} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', className: classes.input }} variant="outlined" className={darkMode ? classes.darkModeSelect : classes.lightModeSelect} />
                         {surveyQuestions["elderly"] && <AdaptableTypography paragraph><i>Ok, we will ensure text size is big enough, and remove unnecessary elements.</i></AdaptableTypography>}
+                        <br />
                         <br />
                         <AdaptableButton onClick={handleSettings} style={{ backgroundColor: "#00194f" }}>
                             Apply changes to settings
