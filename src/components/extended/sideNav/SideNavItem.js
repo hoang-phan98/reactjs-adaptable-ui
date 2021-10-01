@@ -4,16 +4,24 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ListItemText from '@material-ui/core/ListItemText';
 import AdaptableListItem from "../../adaptable/AdaptableListItem";
-import { IconButton, Link, Divider } from "@material-ui/core";
+import { IconButton, Link, Divider, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+    inherit: {
+        fontSize: "inherit",
+        fontFamily: "inherit"
+    }
+}))
 
 const SubMenu = ({ item }) => {
     const [showSubNav, setShowSubNav] = useState(false)
+    const classes = useStyles()
 
     return (
         <>
             <AdaptableListItem adaptableVariant="secondary" optional button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
-                    <ListItemText variant="body1">
+                    <ListItemText variant="body1" classes={{primary: classes.inherit}}>
                         {item.title}
                     </ListItemText>
                     <IconButton color="inherit">
@@ -27,7 +35,7 @@ const SubMenu = ({ item }) => {
                     item.subNav.map((item, index) => {
                         return (
                             <AdaptableListItem adaptableVariant="secondary" optional>
-                                <Link color="inherit" variant="body2" key={index}> {item.title} </Link>
+                                <Link color="inherit" variant="body2" key={index} className={classes.inherit}> {item.title} </Link>
                             </AdaptableListItem>
                         )
                     }) : null
@@ -40,13 +48,14 @@ const SubMenu = ({ item }) => {
 
 export const SideNavItem = ({ item }) => {
     const [showSubNav, setShowSubNav] = useState(false)
+    const classes = useStyles()
 
     return (
         <>
             <AdaptableListItem button onClick={() => setShowSubNav(!showSubNav)}>
                 <>
                     {item.icon}
-                    <ListItemText variant="body1">
+                    <ListItemText variant="body1" classes={{primary: classes.inherit}}>
                         {item.title}
                     </ListItemText>
                     <IconButton color="inherit">

@@ -3,12 +3,12 @@ import AdaptableList from '../../adaptable/AdaptableList';
 import { SideNavData } from './SideNavData';
 import { SideNavItem } from './SideNavItem';
 import AdaptableBox from '../../adaptable/AdaptableBox';
+import AdaptableTypography from '../../adaptable/AdaptableTypography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {
     Drawer,
     IconButton,
     makeStyles,
-    Typography,
     Divider
 } from '@material-ui/core';
 import SearchBar from '../SearchBar';
@@ -38,7 +38,7 @@ export default function AppSideNav(props) {
             <AdaptableBox>
                 <IconButton color="inherit" onClick={() => setShowSideNav(false)}>
                     <ChevronLeftIcon />
-                    <Typography>Hide Menu</Typography>
+                    <AdaptableTypography>Hide Menu</AdaptableTypography>
                 </IconButton>
             </AdaptableBox>
             <Divider />
