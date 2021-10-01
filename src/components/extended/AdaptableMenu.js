@@ -220,7 +220,7 @@ export default function AdaptableMenu(props) {
                     <>
                         <AdaptableTypography variant="h6">Survey</AdaptableTypography>
                         <br />
-                        <AdaptableTypography paragraph>Do you have low vision?</AdaptableTypography>
+                        <AdaptableTypography paragraph>Do you have any vision impairments?</AdaptableTypography>
                         <RadioGroup row aria-label="lowVision" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowVision")} value={surveyQuestions["lowVision"]}>
                             <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
                             <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
@@ -234,12 +234,12 @@ export default function AdaptableMenu(props) {
                         </RadioGroup>
                         {surveyQuestions["photophobic"] && <AdaptableTypography paragraph><i>Ok, we will activate dark mode.</i></AdaptableTypography>}
                         <br />
-                        <AdaptableTypography paragraph>Do you have a low level of language proficiency?</AdaptableTypography>
+                        <AdaptableTypography paragraph>What level of content vocabulary would you prefer?</AdaptableTypography>
                         <RadioGroup row aria-label="lowLanguageProficiency" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "lowLanguageProficiency")} value={surveyQuestions["lowLanguageProficiency"]}>
-                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
-                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Simple as possible" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="Technical jargon is acceptable" />
                         </RadioGroup>
-                        {surveyQuestions["lowLanguageProficiency"] && <AdaptableTypography paragraph><i>Ok, we will simplify the text to a lower proficiency.</i></AdaptableTypography>}
+                        {surveyQuestions["lowLanguageProficiency"] && <AdaptableTypography paragraph><i>Ok, we will simplify the text.</i></AdaptableTypography>}
                         <br />
                         <AdaptableTypography paragraph>Do you have ADHD?</AdaptableTypography>
                         <RadioGroup row aria-label="ADHD" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "ADHD")} value={surveyQuestions["ADHD"]}>
