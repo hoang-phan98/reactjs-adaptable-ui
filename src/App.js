@@ -9,14 +9,24 @@ import ViewPayments from './components/extended/ViewPayments';
 import { makeStyles } from '@material-ui/core';
 import Tasks from './components/extended/tasks';
 import Footer from './components/extended/Footer';
+import HomePagePattern from './components/images/HomePageHeaderPattern.jpg'
+import AdaptablePaper from './components/adaptable/AdaptablePaper';
 
 const useStyles = makeStyles(() => ({
-  background: {
-    backgroundColor: 'none',
-    alignItems: 'center',
-    marginTop: "75px"
+  body: {
+    display: "flex",
+    flexFlow: "column",
+    height: "100%",
   },
-  root: {
+  header: {
+    height: "100px"
+  },
+  background: {
+    backgroundImage: `url(${HomePagePattern})`,
+    alignItems: 'center',
+    marginTop: "75px",
+  },
+  main: {
     display: "inline-flex",
     width: "100%",
   },
@@ -41,21 +51,22 @@ function App() {
       setFontSize: (fontSize) => dispatch(setFontSize(fontSize)),
       setFontFamily: (fontFamily) => dispatch(setFontFamily(fontFamily))
     }}>
-      <AppNavBar />
-      <div className={classes.background}>
-        <div className={classes.root}>
-          <div className={classes.child}>
-            <FavouriteServices />
+      <div className={classes.body}>
+        <AppNavBar className={classes.header}/>
+        <AdaptablePaper elevation={0} className={classes.background}>
+          <div className={classes.main}>
+            <div className={classes.child}>
+              <FavouriteServices />
+            </div>
+            <div className={classes.child}>
+              <CovidInfo />
+              <ViewPayments />
+            </div>
           </div>
-          <div className={classes.child}>
-            <CovidInfo />
-            <ViewPayments />
-          </div>
-        </div>
-        <Tasks />
-        <Footer />
+          <Tasks />
+          <Footer />
+        </AdaptablePaper>
       </div>
-
     </AdaptableContext.Provider>
   );
 }

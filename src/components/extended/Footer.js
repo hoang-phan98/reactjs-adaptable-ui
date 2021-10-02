@@ -10,8 +10,9 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '0px',
-        marginTop: '25px'
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginTop: '20px',
     },
     links: {
         paddingTop: '5px',

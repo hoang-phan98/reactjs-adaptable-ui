@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
     root: {
         padding: "10px",
         margin: "10px",
+        marginBottom: "25px"
     },
     divider: {
         background: "white"
