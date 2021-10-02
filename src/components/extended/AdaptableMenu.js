@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled from "styled-components";
-
+import adaptableTheme from '../../utils/adaptableTheme';
 import AdaptableBox from '../adaptable/AdaptableBox';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {
@@ -114,10 +114,10 @@ export default function AdaptableMenu(props) {
     }
 
     const handleSettings = () => {
-        surveyQuestions["lowVision"] && setFontSize('large');
+        surveyQuestions["lowVision"] && setFontSize(adaptableTheme.fontSize.x_large);
         surveyQuestions["photophobic"] && !darkMode && setDarkMode(true);
         //surveyQuestions["lowLanguageProficiency"] -> call function to set simplicity of text, if true
-        surveyQuestions["ADHD"] && setFontFamily('Comic Sans MS');//also call function to minimize elements if true
+        surveyQuestions["ADHD"] && setFontFamily(adaptableTheme.fonts.adhd_friendly);//also call function to minimize elements if true
         surveyQuestions["elderly"] && setFontSize('large'); // also call function to minimise the unnecessary elements
     }
 
@@ -177,14 +177,24 @@ export default function AdaptableMenu(props) {
                                 <AdaptableSlider
                                     aria-label="TextSize"
                                     defaultValue={10}
-                                    value={fontSize === 'small' ? 0 : (fontSize === 'medium' || fontSize === null) ? 10 : fontSize === 'large' ? 20 : 30}
+                                    value={
+                                        fontSize === adaptableTheme.fontSize.small ? 0 : 
+                                        (fontSize === adaptableTheme.fontSize.medium || fontSize === null) ? 10 : 
+                                        fontSize === adaptableTheme.fontSize.large ? 20 : 
+                                        30
+                                    }
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks={[{ value: 0, label: 'Small' }, { value: 10, label: 'Normal' }, { value: 20, label: 'Large' }, { value: 30, label: 'X-Large' }]}
                                     min={0}
                                     max={30}
                                     onChange={(event, value) => {
-                                        setFontSize(value === 0 ? 'small' : value === 10 ? 'medium' : value === 20 ? 'large' : 'x-large')
+                                        setFontSize(
+                                            value === 0 ? adaptableTheme.fontSize.small : 
+                                            value === 10 ? adaptableTheme.fontSize.medium : 
+                                            value === 20 ? adaptableTheme.fontSize.large : 
+                                            adaptableTheme.fontSize.x_large
+                                        )
                                     }}
                                     classes={{ markLabel: classes.mark }}
                                 />
@@ -210,7 +220,7 @@ export default function AdaptableMenu(props) {
                             <br />
                             <AdaptableTypography paragraph>Font style</AdaptableTypography>
                             <Select
-                                value={fontFamily ?? 'Arial'}
+                                value={fontFamily ?? adaptableTheme.fonts.default}
                                 variant="outlined"
                                 onChange={e => setFontFamily(e.target.value)}
                                 className={darkMode ? classes.darkModeSelect : classes.lightModeSelect}
@@ -220,11 +230,11 @@ export default function AdaptableMenu(props) {
                                     }
                                 }}
                             >
-                                <AdaptableListItem value={'Arial'} >
+                                <AdaptableListItem value={adaptableTheme.fonts.default} >
                                     <AdaptableTypography style={{ backgroundColor: "inherit" }} >Standard font</AdaptableTypography>
                                 </AdaptableListItem>
-                                <AdaptableListItem value={'Comic Sans MS'}>
-                                    <AdaptableTypography style={{ backgroundColor: "inherit" }}>ADHD/Dyslexia-friendly font</AdaptableTypography>
+                                <AdaptableListItem value={adaptableTheme.fonts.adhd_friendly}>
+                                    <AdaptableTypography style={{ backgroundColor: "inherit" }}>ADHD-friendly font</AdaptableTypography>
                                 </AdaptableListItem>
                             </Select>
                         </FormControl>

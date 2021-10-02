@@ -18,7 +18,7 @@ const makeAdaptable = (component) => {
         };
         font-size: ${props => props.fontSize ? props.fontSize : 'medium'
         };
-        font-family: ${props => props.fontFamily ? props.fontFamily : 'Arial'
+        font-family: ${props => props.fontFamily ? props.fontFamily : props.theme.fonts.default
         };
     }`;
 
