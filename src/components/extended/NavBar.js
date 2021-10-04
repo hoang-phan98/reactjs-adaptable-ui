@@ -14,7 +14,6 @@ const useStyles = makeStyles(() => ({
     root: {
         position: "fixed",
         height: "75px",
-        borderBottom: "2px solid white"
     },
 }))
 
