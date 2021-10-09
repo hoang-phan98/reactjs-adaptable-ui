@@ -14,7 +14,8 @@ const useStyles = makeStyles(() => ({
     },
     listItemText: {
         fontSize: "inherit",
-        fontFamily: "inherit"
+        fontFamily: "inherit",
+        fontWeight: "bold",
     }
 }))
 
@@ -31,7 +32,7 @@ export default function ViewPayments() {
                     </ListItemText>
                     <AdaptableButton
                         variant="contained"
-                        endIcon={<ArrowRight />}
+                        endIcon={<ArrowRight style={{ fontSize: "30px"}} />}
                     >
                         View
                     </AdaptableButton>
@@ -45,7 +46,7 @@ export default function ViewPayments() {
                     </ListItemText>
                     <AdaptableButton
                         variant="contained"
-                        endIcon={<ArrowRight />}
+                        endIcon={<ArrowRight style={{ fontSize: "30px"}}/>}
                     >
                         View
                     </AdaptableButton>

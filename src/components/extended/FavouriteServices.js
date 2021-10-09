@@ -8,12 +8,12 @@ import ArrowRight from "@material-ui/icons/ArrowRight";
 
 const useStyles = makeStyles(() => ({
     root: {
-        height: "90%",
-        margin: "10px",
+        height: "80%",
+        margin: "20px",
         padding: "10px",
     },
     heading: {
-        margin: "10px"
+        margin: "10px",
     },
     divider: {
         background: "white"
@@ -25,9 +25,9 @@ export default function FavouriteServices() {
 
     return (
         <AdaptablePaper className={classes.root} >
-            <Grid container spacing={4}>
+            <Grid container spacing={2}>
                 <Grid className={classes.heading} item xs={12}>
-                    <AdaptableTypography variant="h6">Favourite Services</AdaptableTypography>
+                    <AdaptableTypography variant="h6" style={{ fontWeight: "bold" }}>Favourite Services</AdaptableTypography>
                 </Grid>
                 <Grid item xs={12}>
                     <Divider classes={{root: classes.divider}}/>
@@ -37,7 +37,7 @@ export default function FavouriteServices() {
                         <AdaptableListItem button>
                             <>
                                 <IconButton color="inherit">
-                                    <ArrowRight />
+                                    <ArrowRight style={{ fontSize: "30px"}} />
                                 </IconButton>
                                 <AdaptableTypography variant="body1">
                                     Upload Document
@@ -47,7 +47,7 @@ export default function FavouriteServices() {
                         <AdaptableListItem button>
                             <>
                                 <IconButton color="inherit">
-                                    <ArrowRight />
+                                    <ArrowRight style={{ fontSize: "30px"}}/>
                                 </IconButton>
                                 <AdaptableTypography variant="body1">
                                     Manage Deductions
@@ -61,7 +61,7 @@ export default function FavouriteServices() {
                         <AdaptableListItem button>
                             <>
                                 <IconButton color="inherit">
-                                    <ArrowRight />
+                                    <ArrowRight style={{ fontSize: "30px"}}/>
                                 </IconButton>
                                 <AdaptableTypography variant="body1">
                                     Manage Advance Payments
@@ -71,7 +71,7 @@ export default function FavouriteServices() {
                         <AdaptableListItem button>
                             <>
                                 <IconButton color="inherit">
-                                    <ArrowRight />
+                                    <ArrowRight style={{ fontSize: "30px"}}/>
                                 </IconButton>
                                 <AdaptableTypography variant="body1">
                                     Manage Appointments

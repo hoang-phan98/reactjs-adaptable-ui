@@ -36,7 +36,7 @@ export default function Tasks() {
         <AdaptablePaper className={classes.root} optional={optional}>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <AdaptableTypography variant="h6">Outstanding Tasks</AdaptableTypography>
+                    <AdaptableTypography variant="h6" style={{ fontWeight: "bold" }}>Outstanding Tasks</AdaptableTypography>
                 </Grid>
                 <Grid item xs={12}>
                     <Divider classes={{ root: classes.divider }} />

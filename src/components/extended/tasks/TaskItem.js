@@ -40,7 +40,7 @@ export default function TaskItem(props) {
                     secondary={task.secondary} />
                 <AdaptableButton
                     variant="contained"
-                    endIcon={<ArrowRight />}
+                    endIcon={<ArrowRight style={{ fontSize: "30px", fontWeight: "100" }}/>}
                     onClick={() => {
                         removeTask(task.id)
                     }}
