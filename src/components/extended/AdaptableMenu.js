@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import styled from "styled-components";
 import adaptableTheme from '../../utils/adaptableTheme';
 import AdaptableBox from '../adaptable/AdaptableBox';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -14,7 +13,6 @@ import {
     RadioGroup,
     Radio,
     Select,
-    TextField
 } from '@material-ui/core';
 import AdaptableContext from '../../utils/adaptableContext';
 import AdaptableButton from '../adaptable/AdaptableButton';
@@ -77,16 +75,10 @@ const useStyles = makeStyles(() => ({
     },
     radioButton: {
         color: "#FFFFFF"
-    },
-    input: {
-        color: 'white'
     }
-}));
 
-const WhiteBorderTextField = styled(TextField)`
-    color: white;
-    border: solid 2px white;
-`;
+
+}));
 
 export default function AdaptableMenu(props) {
     const { darkMode, setDarkMode, fontSize, setFontSize, fontFamily, setFontFamily } = useContext(AdaptableContext);
@@ -98,18 +90,12 @@ export default function AdaptableMenu(props) {
         lowLanguageProficiency: null,
         lowVision: null,
         ADHD: null,
-        elderly: null,
-        age: null
+        elderly: null
     });
 
     const onChangeSurveyQuestions = (value, name) => {
-        let updatedSurveyQuestions = { ...surveyQuestions };
-        if (name === 'age') {
-            updatedSurveyQuestions['age'] = value;
-            updatedSurveyQuestions['elderly'] = Number(value) >= 60
-        } else {
-            updatedSurveyQuestions[name] = value;
-        }
+        const updatedSurveyQuestions = { ...surveyQuestions };
+        updatedSurveyQuestions[name] = value;
         setSurveyQuestions(updatedSurveyQuestions);
     }
 
@@ -118,7 +104,7 @@ export default function AdaptableMenu(props) {
         surveyQuestions["photophobic"] && !darkMode && setDarkMode(true);
         //surveyQuestions["lowLanguageProficiency"] -> call function to set simplicity of text, if true
         surveyQuestions["ADHD"] && setFontFamily(adaptableTheme.fonts.adhd_friendly);//also call function to minimize elements if true
-        surveyQuestions["elderly"] && setFontSize('large'); // also call function to minimise the unnecessary elements
+        surveyQuestions["elderly"] && setFontSize(adaptableTheme.fontSize.x_large); // also call function to minimise the unnecessary elements
     }
 
     return (
@@ -270,12 +256,14 @@ export default function AdaptableMenu(props) {
                             <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
                             <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
                         </RadioGroup>
-                        {surveyQuestions["ADHD"] && <AdaptableTypography paragraph><i>Ok, we will change font, and also minimize clutter by eliminating unnecessary components on the page.</i></AdaptableTypography>}
+                        {surveyQuestions["ADHD"] && <AdaptableTypography paragraph><i>Ok, we will use an ADHD friendly font.</i></AdaptableTypography>}
                         <br />
-                        <AdaptableTypography paragraph>How old are you?</AdaptableTypography>
-                        <WhiteBorderTextField value={surveyQuestions["age"]} onChange={e => onChangeSurveyQuestions(e.target.value, "age")} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', className: classes.input }} variant="outlined" className={darkMode ? classes.darkModeSelect : classes.lightModeSelect} />
-                        {surveyQuestions["elderly"] && <AdaptableTypography paragraph><i>Ok, we will ensure text size is big enough, and remove unnecessary elements.</i></AdaptableTypography>}
-                        <br />
+                        <AdaptableTypography paragraph>Do you have trouble reading smaller text?</AdaptableTypography>
+                        <RadioGroup row aria-label="elderly" name="row-radio-buttons-group" onChange={e => onChangeSurveyQuestions(isTrue(e.target.value), "elderly")} value={surveyQuestions["elderly"]}>
+                            <FormControlLabel value={true} control={<Radio style={{ color: "#FFF" }} />} label="Yes" />
+                            <FormControlLabel value={false} control={<Radio style={{ color: "#FFF" }} />} label="No" />
+                        </RadioGroup>
+                        {surveyQuestions["elderly"] && <AdaptableTypography paragraph><i>Ok, we will increase text size.</i></AdaptableTypography>}
                         <br />
                         <AdaptableButton onClick={handleSettings} style={{ backgroundColor: "#00194f" }}>
                             Apply changes to settings
